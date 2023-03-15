@@ -1,12 +1,18 @@
-<p style="color: green"><%= notice %></p>
+<% if flash[:success] %>
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <%= flash[:success] %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% end %>
+
 <div class="container">
 <div class="d-flex justify-content-between align-items-center">
-    <h1>Employees</h1>
+    <h3>Employees</h3>
     <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#employeeModal">
       New employee
     </button>
   </div>
-<div class="table-responsive mx-auto">
+<div class="table-responsive mx-auto table-container">
   <table class="table table-bordered text-white text-center">
     <thead class="pink-header">
       <tr>
@@ -27,7 +33,6 @@
       <% end %>
     </tbody>
   </table>
-  <%== pagy_nav(@pagy) %>
 </div>
 
 <!-- Modal -->

@@ -3,7 +3,7 @@ class EmployeesController < ApplicationController
 
   # GET /employees or /employees.json
   def index
-    @pagy, @employees = pagy(Employee.all, items: 5)
+    @employees = Employee.all.sort_by { |e| e.cake_details['date'] }
   end
 
   # GET /employees/1 or /employees/1.json
@@ -32,7 +32,7 @@ class EmployeesController < ApplicationController
     respond_to do |format|
       if @employee.save
         Employee.update_cake_sizes_for_same_birthdays(@employee)
-        format.html { redirect_to employees_url, notice: "Employee was successfully created." }
+        format.html { redirect_to employees_url, success: "Employee was successfully created." }
         format.json { render :show, status: :created, location: @employee }
       else
         format.html { render :new, status: :unprocessable_entity }

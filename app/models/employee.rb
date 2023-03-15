@@ -43,12 +43,13 @@ def calculate_cake_date
   end
 
   def self.update_cake_sizes_for_same_birthdays(employee)
-    employees_with_same_birthday = Employee.where(date_of_birth: employee.date_of_birth).to_a
+    employees_with_same_birthday = Employee.where("DATE_PART('month', date_of_birth) = ? AND DATE_PART('day', date_of_birth) = ?", employee.date_of_birth.month, employee.date_of_birth.day).to_a
     if employees_with_same_birthday.size > 1
       employees_with_same_birthday.each do |e|
         e.update(cake_details: { date: e.cake_details["date"], size: "Large" })
       end
     end
   end
+
   
 end
