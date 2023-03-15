@@ -1,4 +1,5 @@
-Cake Project READ.ME!
+## Cake Project READ.ME!
+
 This web application is designed to keep track of employee birthdays at the company. It allows users to input an employee's name and date of birth and automatically calculates the date of cake delivery, based on the following rules:
 
 A small cake is provided on the employee’s first working day after their birthday.
@@ -12,7 +13,8 @@ The application also includes a pie chart that shows the total number of cakes s
 
 ---
 
-Technologies Used
+## Technologies Used
+
 The application uses the following technologies:
 
 Ruby on Rails
@@ -22,7 +24,7 @@ CSS
 JavaScript
 Chart.js library
 
-Gems (Not all used)
+## Gems (Not all used)
 
 rails: web application framework for Ruby on Rails
 sprockets-rails: original asset pipeline for Rails
@@ -49,7 +51,8 @@ faker: generate fake data for testing
 
 ---
 
-Setup
+## Setup
+
 To run this application on your local machine, follow these steps:
 
 Clone this repository to your local machine
@@ -60,7 +63,8 @@ Open a web browser and navigate to http://localhost:3000/
 
 ---
 
-Setting Up Dummy Data
+## Setting Up Dummy Data
+
 To quickly populate the database with some dummy data, you can run the following command:
 
 `rails db:seed`
@@ -75,7 +79,8 @@ Some of these employees share the same birthday, which will result in their cake
 
 ---
 
-Usage
+## Usage
+
 To use this application, follow these steps:
 
 On the home page, click the "New employee" button to open the form.
@@ -86,7 +91,8 @@ To add more employees, repeat steps 1-2.
 
 ---
 
-Conclusion
+## Conclusion
+
 In conclusion, building the birthday cake tracking web application was a challenging but rewarding task. Some of the main issues faced during development included selecting the right pie chart package to work seamlessly with the Rails framework, ensuring the post requests sent the correct data to the database, and writing the logic to accurately determine the cake_dates and cake_sizes based on the employee's date of birth.
 
 Despite these challenges, the project was successful in meeting most of the requirements outlined in the initial brief, including creating a form for entering employee details, generating a table with the employee information, sorting the table in ascending order of cake_date, and displaying a pie chart of the total number of cakes by size.
@@ -95,5 +101,6 @@ Overall, building the birthday cake tracking application was an excellent opport
 
 ---
 
-Further Improvements
+## Further Improvements
+
 There are several possible further improvements that could be made to this application. One possible improvement would be to implement AJAX requests, so that the screen does not have to be refreshed to update the table and chart. This would make the user experience smoother and more seamless. Another possible improvement would be to add pagination and update the data on pagination, so that the table does not become too unwieldy as more employees are added. Another possible feature would be to add search filters to the table, so that users can more easily find specific employees. Another field of favourite cakes could also be added to the form, and if the selected favourite cake matches when employees have the same birthday, the oldest one gets the choice. This would add a fun and personalized touch to the application.
