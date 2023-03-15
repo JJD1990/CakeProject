@@ -1,0 +1,82 @@
+<p style="color: green"><%= notice %></p>
+<div class="container">
+<div class="d-flex justify-content-between align-items-center">
+    <h1>Employees</h1>
+    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#employeeModal">
+      New employee
+    </button>
+  </div>
+<div class="table-responsive mx-auto">
+  <table class="table table-bordered text-white text-center">
+    <thead class="pink-header">
+      <tr>
+        <th>Name</th>
+        <th>Date of Birth</th>
+        <th>Cake Date</th>
+        <th>Cake Size</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @employees.each do |employee| %>
+       <tr>
+        <td><%= employee.name %></td>
+        <td><%= employee.date_of_birth %></td>
+        <td><%= employee.cake_details["date"] %></td> 
+        <td><%= employee.cake_details["size"].titleize %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%== pagy_nav(@pagy) %>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="employeeModal" tabindex="-1" aria-labelledby="employeeModalLabel" aria-hidden="true">
+  <div class="modal-dialog bg-dark">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-black" id="employeeModalLabel">New Employee</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= render 'form', employee: Employee.new %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="chart-wrapper">
+  <canvas id="myChart"></canvas>
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  // Get the canvas element and chart data
+  let canvas = document.getElementById('myChart');
+  let data = [<%= Employee.where("cake_details ->> 'size' = 'Small'").count %>, <%= Employee.where("cake_details ->> 'size' = 'Large'").count %>];
+  
+  // Create a new chart instance
+  let myChart = new Chart(canvas, {
+    type: 'pie',
+    data: {
+      datasets: [{
+        data: data,
+        backgroundColor: ['#2183A7', '#DB2885']
+      }],
+      labels: ['Small', 'Large']
+    },
+    options: {
+      responsive: true
+    }
+  });
+
+  // Reload the page on form submission
+  let form = document.querySelector('form');
+  if (form) {
+    form.addEventListener('submit', () => {
+      location.reload();
+    });
+  }
+
+</script>
