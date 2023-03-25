@@ -69,10 +69,21 @@
         data: data,
         backgroundColor: ['#2183A7', '#DB2885']
       }],
-      labels: ['Small', 'Large']
+      labels: ['Small Cake', 'Large Cake']
     },
     options: {
-      responsive: true
+      responsive: true, 
+      plugins: {  // 'legend' now within object 'plugins {}'
+      legend: {
+        labels: {
+          color: "white",  // not 'fontColor:' anymore
+          // fontSize: 18  // not 'fontSize:' anymore
+          font: {
+            size: 16 // 'size' now within object 'font {}'
+          }
+        }
+      }
+    },
     }
   });
 
