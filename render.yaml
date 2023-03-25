@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: your-app-name
+    name: cake_project
     env: ruby
     buildCommand: |
       bundle install --jobs 4 --retry 3 --deployment
